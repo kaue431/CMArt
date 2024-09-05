@@ -18,7 +18,12 @@ const storage = firebase.storage();
 
 // Mostrar área de upload ao clicar no botão "Adicionar meu desenho"
 document.getElementById('adicionarDesenhoBtn').addEventListener('click', function() {
-    document.getElementById('uploadArea').style.display = 'block';
+    const uploadArea = document.getElementById('uploadArea');
+    if (uploadArea.style.display === 'none') {
+        uploadArea.style.display = 'block';
+    } else {
+        uploadArea.style.display = 'none'; // Alternar exibição
+    }
 });
 
 // Fazer upload do desenho para o Firebase Storage
