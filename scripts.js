@@ -16,11 +16,26 @@ const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const storage = firebase.storage();
 
-// Mostrar área de upload ao clicar no botão "Adicionar meu desenho"
+// Modal
+const modal = document.getElementById("uploadModal");
+const closeModal = document.getElementById("closeModal");
+
+// Mostrar modal ao clicar no botão "Adicionar meu desenho"
 document.getElementById('adicionarDesenhoBtn').addEventListener('click', function() {
-    const uploadArea = document.getElementById('uploadArea');
-    uploadArea.style.display = uploadArea.style.display === 'none' ? 'block' : 'none';
+    modal.style.display = "block";
 });
+
+// Fechar modal ao clicar no X
+closeModal.addEventListener('click', function() {
+    modal.style.display = "none";
+});
+
+// Fechar modal ao clicar fora da área de conteúdo do modal
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
 
 // Fazer upload do desenho para o Firebase Storage
 document.getElementById('uploadBtn').addEventListener('click', function() {
@@ -38,7 +53,7 @@ document.getElementById('uploadBtn').addEventListener('click', function() {
                 }).then(() => {
                     alert('Desenho enviado com sucesso!');
                     carregarDesenhos(); // Atualiza a galeria
-                    document.getElementById('uploadArea').style.display = 'none'; // Esconde área de upload após sucesso
+                    modal.style.display = "none"; // Fecha o modal após sucesso
                 }).catch(error => {
                     console.error('Erro ao salvar no banco de dados:', error);
                 });
