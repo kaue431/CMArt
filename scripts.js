@@ -1,3 +1,23 @@
+// Importar funções necessárias do Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js";
+import { getDatabase, ref as dbRef, set, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+
+// Configurações do Firebase
+const firebaseConfig = {
+    apiKey: "SUA_API_KEY", // Substitua pela sua API key
+    authDomain: "SEU_DOMINIO.firebaseapp.com", // Substitua pelo seu domínio
+    projectId: "SEU_PROJETO_ID", // Substitua pelo ID do seu projeto
+    storageBucket: "SEU_BUCKET.appspot.com", // Substitua pelo seu bucket
+    messagingSenderId: "SEU_SENDER_ID", // Substitua pelo seu sender ID
+    appId: "SEU_APP_ID" // Substitua pelo seu app ID
+};
+
+// Inicializa o Firebase
+const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+const database = getDatabase(app);
+
 document.addEventListener('DOMContentLoaded', () => {
     const galeria = document.getElementById('galeria');
     const uploadForm = document.getElementById('upload-form');
@@ -7,28 +27,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const adicionarDesenhoBtn = document.getElementById('adicionar-desenho-btn');
     let currentIndex = 0;
 
-    const desenhos = [
-        { autor: 'Aluno 1', url: 'desenho1.png' },
-        { autor: 'Aluno 2', url: 'desenho2.png' },
-        { autor: 'Aluno 3', url: 'desenho3.png' }
-    ];
-
-    // Função para exibir os desenhos na galeria
-    const exibirDesenhos = () => {
-        desenhos.forEach(desenho => {
-            const div = document.createElement('div');
-            div.className = 'desenho';
-            div.innerHTML = `<img src="${desenho.url}" alt="Desenho de ${desenho.autor}"><p>${desenho.autor}</p>`;
-            galeria.appendChild(div);
+    // Função para carregar desenhos do Firebase
+    const carregarDesenhos = () => {
+        const desenhosRef = dbRef(database, 'desenhos/');
+        onValue(desenhosRef, (snapshot) => {
+            galeria.innerHTML = ''; // Limpa a galeria antes de adicionar novos desenhos
+            snapshot.forEach(childSnapshot => {
+                const { autor, url } = childSnapshot.val();
+                const div = document.createElement('div');
+                div.className = 'desenho';
+                div.innerHTML = `<img src="${url}" alt="Desenho de ${autor}"><p>${autor}</p>`;
+                galeria.appendChild(div);
+            });
         });
     };
 
     // Função para mover a galeria automaticamente
     const moverGaleria = () => {
-        const totalDesenhos = desenhos.length;
-        currentIndex = (currentIndex + 1) % totalDesenhos;
-        const offset = -currentIndex * 100; // Move 100% para o próximo slide
-        galeria.style.transform = `translateX(${offset}%)`;
+        const totalDesenhos = galeria.children.length;
+        if (totalDesenhos > 0) {
+            currentIndex = (currentIndex + 1) % totalDesenhos;
+            const offset = -currentIndex * 100; // Move 100% para o próximo slide
+            galeria.style.transform = `translateX(${offset}%)`;
+        }
     };
 
     // Enviar desenho
@@ -39,31 +60,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const arquivo = fileInput.files[0];
 
         if (autor && arquivo) {
-            const reader = new FileReader();
+            const storageRef = ref(storage, `desenhos/${arquivo.name}`);
+            uploadBytes(storageRef, arquivo).then(() => {
+                return getDownloadURL(storageRef);
+            }).then((urlImagem) => {
+                // Adicionar novo desenho ao Firebase
+                const desenhosRef = dbRef(database, 'desenhos/' + arquivo.name);
+                set(desenhosRef, {
+                    autor,
+                    url: urlImagem
+                });
 
-            reader.onload = function(evento) {
-                const urlImagem = evento.target.result;
-
-                // Adicionar novo desenho ao array de desenhos
-                desenhos.push({ autor, url: urlImagem });
-
-                // Criar novo elemento de desenho
-                const novoDesenho = document.createElement('div');
-                novoDesenho.className = 'desenho';
-                novoDesenho.innerHTML = `<img src="${urlImagem}" alt="Desenho de ${autor}"><p>${autor}</p>`;
-
-                // Adicionar o novo desenho à galeria
-                galeria.appendChild(novoDesenho);
-            };
-
-            // Ler o arquivo de imagem como DataURL para exibição
-            reader.readAsDataURL(arquivo);
-
-            // Limpar o formulário após o envio
-            uploadForm.reset();
-
-            // Esconder a área de upload novamente após o envio
-            uploadSection.classList.add('hidden');
+                // Limpar o formulário após o envio
+                uploadForm.reset();
+                uploadSection.classList.add('hidden');
+            }).catch(error => {
+                console.error('Erro ao enviar o desenho:', error);
+                alert('Erro ao enviar o desenho. Tente novamente.');
+            });
         } else {
             alert('Por favor, preencha seu nome e escolha um arquivo de imagem.');
         }
@@ -74,8 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadSection.classList.toggle('hidden');
     };
 
-    // Inicializar galeria
-    exibirDesenhos();
+    // Inicializar galeria e carregar desenhos do Firebase
+    carregarDesenhos();
     setInterval(moverGaleria, 3000); // A cada 3 segundos move para o próximo slide
 
     // Evento de clique no botão "Adicionar Meu Desenho"
