@@ -10,11 +10,34 @@
     <header>
         <h1>Galeria CMArt</h1>
     </header>
+
     <main>
-        <div id="galeria">
-            <!-- Os desenhos serão exibidos aqui -->
-        </div>
+        <!-- Área de Upload -->
+        <section id="upload-section">
+            <h2>Envie seu Desenho</h2>
+            <form id="upload-form">
+                <input type="text" id="autor" placeholder="Seu nome" required><br>
+                <input type="file" id="file-input" accept="image/*" required><br>
+                <button type="submit">Enviar Desenho</button>
+            </form>
+        </section>
+
+        <!-- Galeria de Desenhos -->
+        <section id="galeria-section">
+            <h2>Desenhos dos Alunos</h2>
+            <div id="galeria-container">
+                <div id="galeria">
+                    <!-- Os desenhos vão aparecer aqui -->
+                </div>
+            </div>
+        </section>
     </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 CMArt - Todos os direitos reservados</p>
+    </footer>
+
     <script src="scripts.js"></script>
 </body>
 </html>
