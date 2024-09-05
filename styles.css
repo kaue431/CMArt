@@ -6,6 +6,12 @@ body {
     padding: 20px;
 }
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #galeria {
     display: flex;
     overflow: hidden;
