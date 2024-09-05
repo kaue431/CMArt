@@ -28,6 +28,28 @@ main {
     padding: 20px;
 }
 
+#botao-section {
+    margin-bottom: 20px;
+}
+
+#adicionar-desenho-btn {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#adicionar-desenho-btn:hover {
+    background-color: #555;
+}
+
+/* Esconder a seção de upload inicialmente */
+.hidden {
+    display: none;
+}
+
 #upload-section {
     background-color: #fff;
     border-radius: 8px;
