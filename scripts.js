@@ -7,11 +7,13 @@ import { getDatabase, ref as dbRef, set, onValue } from "https://www.gstatic.com
 const firebaseConfig = {
   apiKey: "AIzaSyD4WbpkQEijKKKXV_C1e8uu8588Obw1CCM",
   authDomain: "cmart-81f45.firebaseapp.com",
+  databaseURL: "https://cmart-81f45-default-rtdb.firebaseio.com",
   projectId: "cmart-81f45",
   storageBucket: "cmart-81f45.appspot.com",
   messagingSenderId: "216861470054",
-  appId: "1:216861470054:web:d82d63217ddc038ed56ca7",
-  measurementId: "G-0CBMYE7RJ5"
+  appId: "1:216861470054:web:5c81e8ee801be541d56ca7",
+  measurementId: "G-LK8Q1RKG89"
+  databaseURL: "https://cmart-81f45-default-rtdb.firebaseio.com/"
 };
 
 // Inicializa o Firebase
