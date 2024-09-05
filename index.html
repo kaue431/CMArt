@@ -5,52 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMArt</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Galeria CMArt</h1>
-    </header>
+    <h1>Galeria de Desenhos - CMArt</h1>
+    <div id="galeria"></div>
 
-    <main>
-        <!-- Botão para Adicionar Desenho -->
-        <section id="botao-section">
-            <button id="adicionar-desenho-btn">Adicionar Meu Desenho</button>
-        </section>
+    <button id="adicionarDesenhoBtn">Adicionar meu desenho</button>
+    <div id="uploadArea" style="display: none;">
+        <input type="file" id="uploadFile" accept="image/*">
+        <input type="text" id="nomeAutor" placeholder="Seu nome">
+        <button id="uploadBtn">Fazer upload</button>
+    </div>
 
-        <!-- Área de Upload (Escondida inicialmente) -->
-        <section id="upload-section" class="hidden">
-            <h2>Envie seu Desenho</h2>
-            <form id="upload-form">
-                <input type="text" id="autor" placeholder="Seu nome" required><br>
-                <input type="file" id="file-input" accept="image/*" required><br>
-                <button type="submit">Enviar Desenho</button>
-            </form>
-        </section>
-
-        <!-- Galeria de Desenhos -->
-        <section id="galeria-section">
-            <h2>Desenhos dos Alunos</h2>
-            <div id="galeria-container">
-                <div id="galeria">
-                    <!-- Os desenhos vão aparecer aqui -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Rodapé -->
     <footer>
-        <p>© 2024 CMArt - Todos os direitos reservados</p>
+        <p>&copy; 2024 CMArt - Todos os direitos reservados</p>
     </footer>
 
-    <script src="scripts.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js"></script>
-
+    <script src="scripts.js"></script>
 </body>
 </html>
