@@ -5,12 +5,13 @@ import { getDatabase, ref as dbRef, set, onValue } from "https://www.gstatic.com
 
 // Configurações do Firebase
 const firebaseConfig = {
-    apiKey: "SUA_API_KEY", // Substitua pela sua API key
-    authDomain: "SEU_DOMINIO.firebaseapp.com", // Substitua pelo seu domínio
-    projectId: "SEU_PROJETO_ID", // Substitua pelo ID do seu projeto
-    storageBucket: "SEU_BUCKET.appspot.com", // Substitua pelo seu bucket
-    messagingSenderId: "SEU_SENDER_ID", // Substitua pelo seu sender ID
-    appId: "SEU_APP_ID" // Substitua pelo seu app ID
+  apiKey: "AIzaSyD4WbpkQEijKKKXV_C1e8uu8588Obw1CCM",
+  authDomain: "cmart-81f45.firebaseapp.com",
+  projectId: "cmart-81f45",
+  storageBucket: "cmart-81f45.appspot.com",
+  messagingSenderId: "216861470054",
+  appId: "1:216861470054:web:d82d63217ddc038ed56ca7",
+  measurementId: "G-0CBMYE7RJ5"
 };
 
 // Inicializa o Firebase
