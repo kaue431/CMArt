@@ -17,10 +17,15 @@
     
     <div id="galeria"></div>
 
-    <div id="uploadArea" style="display: none;">
-        <input type="file" id="uploadFile" accept="image/*" required>
-        <input type="text" id="nomeAutor" placeholder="Seu nome" required>
-        <button id="uploadBtn">Fazer upload</button>
+    <!-- Modal de Upload -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Adicionar Desenho</h2>
+            <input type="file" id="uploadFile" accept="image/*" required>
+            <input type="text" id="nomeAutor" placeholder="Seu nome" required>
+            <button id="uploadBtn">Fazer upload</button>
+        </div>
     </div>
 
     <footer>
