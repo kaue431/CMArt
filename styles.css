@@ -1,56 +1,51 @@
 /* styles.css */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #f4f4f4;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+header button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: #ff5733;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+header button:hover {
+    background: #ff2e00;
 }
 
 #galeria {
     display: flex;
-    overflow: hidden;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+    margin: 20px;
 }
 
 .galeria-item {
-    margin: 0 10px;
-    transition: transform 0.5s ease;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
 }
 
 .galeria-item img {
-    width: 100%;
-    max-width: 300px;
-    border: 2px solid #000;
+    max-width: 100%;
+    border-radius: 10px;
 }
-
-#uploadArea {
-    margin-top: 20px;
-}
-
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
-
-/* styles.css */
-/* ... seu código existente ... */
 
 .modal {
     display: none; 
@@ -87,3 +82,12 @@ footer {
     cursor: pointer;
 }
 
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #007bff;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
