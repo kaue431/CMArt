@@ -19,11 +19,7 @@ const storage = firebase.storage();
 // Mostrar área de upload ao clicar no botão "Adicionar meu desenho"
 document.getElementById('adicionarDesenhoBtn').addEventListener('click', function() {
     const uploadArea = document.getElementById('uploadArea');
-    if (uploadArea.style.display === 'none') {
-        uploadArea.style.display = 'block';
-    } else {
-        uploadArea.style.display = 'none'; // Alternar exibição
-    }
+    uploadArea.style.display = uploadArea.style.display === 'none' ? 'block' : 'none';
 });
 
 // Fazer upload do desenho para o Firebase Storage
@@ -42,6 +38,7 @@ document.getElementById('uploadBtn').addEventListener('click', function() {
                 }).then(() => {
                     alert('Desenho enviado com sucesso!');
                     carregarDesenhos(); // Atualiza a galeria
+                    document.getElementById('uploadArea').style.display = 'none'; // Esconde área de upload após sucesso
                 }).catch(error => {
                     console.error('Erro ao salvar no banco de dados:', error);
                 });
