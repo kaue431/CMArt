@@ -1,5 +1,3 @@
-// scripts.js
-
 // Configuração do Firebase
 const firebaseConfig = {
     apiKey: "AIzaSyD4WbpkQEijKKKXV_C1e8uu8588Obw1CCM",
@@ -87,23 +85,33 @@ function carregarDesenhos() {
             `;
             galeria.appendChild(item);
         });
+        iniciarCarrossel(); // Iniciar o carrossel após carregar os desenhos
     });
 }
 
 // Função para iniciar o carrossel
 let currentIndex = 0;
-function mostrarProximoDesenho() {
+function iniciarCarrossel() {
     const items = document.querySelectorAll('.galeria-item');
     if (items.length > 0) {
-        items.forEach((item, index) => {
-            item.style.transform = `translateX(${(index - currentIndex) * 100}%)`;
-            item.style.opacity = index === currentIndex ? '1' : '0.5'; // Destaque para o item central
-        });
-        currentIndex = (currentIndex + 1) % items.length;
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % items.length;
+            mostrarDesenhoAtual(items);
+        }, 3000); // Troca de imagem a cada 3 segundos
     }
 }
 
-setInterval(mostrarProximoDesenho, 3000); // Troca a cada 3 segundos
+function mostrarDesenhoAtual(items) {
+    items.forEach((item, index) => {
+        if (index === currentIndex) {
+            item.style.transform = `scale(1.2)`; // Aumenta o desenho central
+            item.style.opacity = '1'; // Destaca o desenho
+        } else {
+            item.style.transform = `scale(1)`; // Reduz os demais
+            item.style.opacity = '0.5'; // Apaga os demais
+        }
+    });
+}
 
-// Carregar desenhos ao abrir a página
+// Carregar desenhos na inicialização
 window.onload = carregarDesenhos;
