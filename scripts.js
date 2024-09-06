@@ -16,10 +16,11 @@ const app = firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const storage = firebase.storage();
 
-// Modal
+// Referências dos elementos da página
 const modal = document.getElementById("uploadModal");
 const closeModal = document.getElementById("closeModal");
 const adicionarDesenhoBtn = document.getElementById("adicionarDesenhoBtn");
+const uploadBtn = document.getElementById("uploadBtn");
 
 // Mostrar modal ao clicar no botão "Adicionar meu desenho"
 adicionarDesenhoBtn.addEventListener('click', function() {
@@ -39,7 +40,7 @@ window.onclick = function(event) {
 };
 
 // Fazer upload do desenho para o Firebase Storage
-document.getElementById('uploadBtn').addEventListener('click', function() {
+uploadBtn.addEventListener('click', function() {
     const file = document.getElementById('uploadFile').files[0];
     const autor = document.getElementById('nomeAutor').value;
 
