@@ -19,9 +19,10 @@ const storage = firebase.storage();
 // Modal
 const modal = document.getElementById("uploadModal");
 const closeModal = document.getElementById("closeModal");
+const adicionarDesenhoBtn = document.getElementById("adicionarDesenhoBtn");
 
 // Mostrar modal ao clicar no botão "Adicionar meu desenho"
-document.getElementById('adicionarDesenhoBtn').addEventListener('click', function() {
+adicionarDesenhoBtn.addEventListener('click', function() {
     modal.style.display = "block";
 });
 
@@ -30,7 +31,7 @@ closeModal.addEventListener('click', function() {
     modal.style.display = "none";
 });
 
-// Fechar modal ao clicar fora da área de conteúdo do modal
+// Fechar modal ao clicar fora da área de conteúdo
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
