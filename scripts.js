@@ -1,9 +1,7 @@
 const desenhos = [
-    { autor: "Maria Silva", caminho: "desenhos/desenho1.png" },
-    { autor: "João Souza", caminho: "desenhos/desenho2.png" },
-    { autor: "Ana Santos", caminho: "desenhos/desenho3.png" },
-    { autor: "Pedro Oliveira", caminho: "desenhos/desenho4.png" },
-    { autor: "Carla Dias", caminho: "desenhos/desenho5.png" }
+    { autor: "JK", caminho: "desenhos/Satoru.png" },
+    { autor: "Kaue", caminho: "desenhos/Anya.jpg" },
+    { autor: "Juliano", caminho: "desenhos/Yuji.jpg" }
 ];
 
 const carrossel = document.getElementById('carrossel');
