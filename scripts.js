@@ -1,14 +1,14 @@
 let currentIndex = 0;
 const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
 
 function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.style.transform = `translateX(${(i - index) * 100}%)`;
-    });
+    const carrossel = document.getElementById('carrossel');
+    carrossel.style.transform = `translateX(-${index * 33.33}%)`;
 }
 
 function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
+    currentIndex = (currentIndex + 1) % totalSlides;
     showSlide(currentIndex);
 }
 
