@@ -1,8 +1,8 @@
 // Lista de desenhos com URLs e autores
 const desenhos = [
     {
-        autor: "Maria Silva",
-        url: "https://firebasestorage.googleapis.com/v0/b/cmart-81f45.appspot.com/o/Desenhos%2Fdesenho1.png?alt=media&token=exampleToken1"
+        autor: "JK",
+        url: "https://firebasestorage.googleapis.com/v0/b/cmart-81f45.appspot.com/o/Desenhos%2FScreenshot_2024-08-23-10-58-38-577_com.android.chrome.png?alt=media&token=a5dfae1a-e50d-4621-b5ef-dc329046f94b"
     },
     {
         autor: "João Souza",
