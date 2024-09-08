@@ -34,24 +34,21 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Usar a largura total */
-    max-width: 800px; /* Largura máxima para não ficar muito grande */
-    overflow: hidden;
-    position: relative;
+    width: 300%; /* Ajusta o tamanho do carrossel para 3 slides visíveis */
+    transition: transform 0.5s ease-in-out;
 }
 
 .slide {
+    min-width: 33.33%; /* Cada slide ocupa 1/3 do carrossel */
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.5s ease-in-out;
-    min-width: 100%; /* Cada slide ocupa 100% do carrossel */
 }
 
 .slide img {
-    width: 100%; /* Imagem ocupa 100% da largura do slide */
+    width: 80%;
     height: auto;
-    max-height: 400px; /* Altura máxima ajustada */
+    max-height: 300px;
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -59,22 +56,22 @@ header {
 
 .author-name {
     margin-top: 10px;
-    font-size: 1.2em; /* Tamanho da fonte do autor */
+    font-size: 1.2em;
     color: #333;
 }
 
 /* Responsivo para telas menores */
 @media (max-width: 768px) {
     #carrossel {
-        max-width: 90%; /* Largura reduzida em telas menores */
+        width: 100%;
+    }
+
+    .slide {
+        min-width: 100%; /* Um slide por vez em telas menores */
     }
 
     .slide img {
-        max-height: 250px; /* Altura reduzida em telas menores */
-    }
-
-    .author-name {
-        font-size: 1em; /* Tamanho da fonte do autor reduzido */
+        max-height: 200px;
     }
 }
 
