@@ -34,8 +34,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    max-width: 1200px;
+    width: 70%; /* Diminuir largura */
+    max-width: 1000px; /* Ajuste máximo para telas grandes */
     overflow: hidden;
     position: relative;
 }
@@ -49,9 +49,9 @@ header {
 }
 
 .slide img {
-    width: 100%;
+    width: 90%; /* Ajusta a largura da imagem dentro do carrossel */
     height: auto;
-    max-height: 500px;
+    max-height: 400px; /* Diminuir altura máxima */
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -59,18 +59,22 @@ header {
 
 .author-name {
     margin-top: 10px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #333;
 }
 
 /* Responsivo para telas menores */
 @media (max-width: 768px) {
     #carrossel {
-        width: 90%;
+        width: 85%;
+    }
+
+    .slide img {
+        max-height: 300px; /* Reduz a altura da imagem em telas menores */
     }
 
     .author-name {
-        font-size: 1em;
+        font-size: 0.9em;
     }
 }
 
