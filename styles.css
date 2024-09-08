@@ -1,58 +1,85 @@
-/* Reseta as margens e bordas para evitar problemas de layout */
+/* Reseta margens e bordas */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos gerais para o body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o body ocupe a altura total da janela */
-    overflow-x: hidden; /* Remove qualquer rolagem horizontal */
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
-/* Estilo do cabeçalho */
 header {
-    text-align: center;
-    padding: 20px;
     background-color: #4CAF50;
     color: white;
+    padding: 20px;
+    text-align: center;
 }
 
-/* Estilo do contêiner do carrossel */
 #carrossel-container {
-    flex: 1; /* Faz o contêiner ocupar todo o espaço disponível */
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    overflow: hidden; /* Impede qualquer conteúdo de ultrapassar o contêiner */
+    overflow: hidden;
 }
 
-/* Estilo do carrossel */
 #carrossel {
-    width: 80%;
-    height: 100%; /* O carrossel usará toda a altura disponível */
-    max-height: 500px; /* Define uma altura máxima para o carrossel */
-    background-color: #eee;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
-    overflow: hidden; /* Para garantir que os desenhos não saiam da área visível */
+    width: 80%;
+    max-width: 1200px;
+    overflow: hidden;
     position: relative;
 }
 
-/* Estilo do rodapé */
+.slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+    min-width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.author-name {
+    margin-top: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 768px) {
+    #carrossel {
+        width: 90%;
+    }
+
+    .author-name {
+        font-size: 1em;
+    }
+}
+
 footer {
+    background-color: #4CAF50;
+    color: white;
     text-align: center;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    position: relative;
-    bottom: 0;
     width: 100%;
+    margin-top: auto;
+    position: relative;
 }
