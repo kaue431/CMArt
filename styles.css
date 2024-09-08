@@ -90,10 +90,11 @@ footer {
 
 .info-text {
     font-size: 1.2em;
-    margin: 20px 0;
+    margin: 50px 0 20px 0; /* Aumentado o espaçamento superior para 50px */
     text-align: center;
     color: #555;
 }
+
 
 /* Responsividade */
 @media (max-width: 768px) {
