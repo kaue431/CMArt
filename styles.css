@@ -28,10 +28,11 @@ h1 {
 #carrossel {
     display: flex;
     transition: transform 0.5s ease;
+    justify-content: center; /* Para manter os desenhos centralizados */
 }
 
 .desenho {
-    flex: 0 0 100%;
+    flex: 0 0 33.33%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,13 +77,13 @@ footer {
 
 @media (min-width: 768px) {
     .desenho {
-        flex: 0 0 33.33%; /* Mostra 3 desenhos de uma vez no tablet */
+        flex: 0 0 33.33%; /* Mostra 3 desenhos no tablet */
     }
 }
 
 @media (min-width: 1200px) {
     .desenho {
-        flex: 0 0 25%; /* Mostra 4 desenhos de uma vez no computador */
+        flex: 0 0 25%; /* Mostra 4 desenhos no computador */
     }
 
     .desenho.focus {
