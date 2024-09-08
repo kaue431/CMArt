@@ -1,20 +1,25 @@
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f0f0f5;
+    color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin: 0;
-    background-color: #f5f5f5;
-    color: #333;
-    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
 }
 
 h1 {
-    margin: 20px 0;
     font-size: 2.5em;
-    color: #007BFF;
-    text-align: center;
+    margin: 0;
 }
 
 #carrossel-container {
@@ -22,17 +27,20 @@ h1 {
     max-width: 1200px;
     overflow: hidden;
     position: relative;
-    margin-bottom: 20px;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
 }
 
 #carrossel {
     display: flex;
     transition: transform 0.5s ease;
-    justify-content: center; /* Para manter os desenhos centralizados */
+    justify-content: center;
+    align-items: center;
 }
 
 .desenho {
-    flex: 0 0 33.33%;
+    flex: 0 0 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,6 +48,7 @@ h1 {
     transition: transform 0.5s ease;
     opacity: 0.3;
     transform: scale(0.8);
+    margin: 0 10px;
 }
 
 .desenho.focus {
@@ -50,9 +59,11 @@ h1 {
 }
 
 .desenho img {
-    max-width: 80%;
+    max-width: 100%;
+    max-height: 400px; /* Espaço maior para desenhos no modo paisagem */
+    object-fit: contain;
     border-radius: 10px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .desenho.focus img {
@@ -62,7 +73,9 @@ h1 {
 .desenho p {
     font-size: 1.2em;
     font-weight: bold;
-    color: #333;
+    color: #007BFF;
+    margin-top: 10px;
+    text-align: center;
 }
 
 footer {
@@ -70,27 +83,36 @@ footer {
     background-color: #007BFF;
     color: white;
     padding: 10px 0;
+    width: 100%;
     position: fixed;
     bottom: 0;
-    width: 100%;
 }
 
-@media (min-width: 768px) {
+.info-text {
+    font-size: 1.2em;
+    margin: 20px 0;
+    text-align: center;
+    color: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
     .desenho {
-        flex: 0 0 33.33%; /* Mostra 3 desenhos no tablet */
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+
+    .desenho img {
+        max-height: 300px;
     }
 }
 
 @media (min-width: 1200px) {
     .desenho {
-        flex: 0 0 25%; /* Mostra 4 desenhos no computador */
+        flex: 0 0 25%;
     }
 
-    .desenho.focus {
-        transform: scale(1.4); /* Aumenta o foco em telas maiores */
-    }
-
-    .desenho.focus img {
-        transform: scale(1.2);
+    .desenho img {
+        max-height: 500px;
     }
 }
