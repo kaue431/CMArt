@@ -1,111 +1,46 @@
-/* General Styles */
+/* Estilos básicos do site */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f0f0f5;
-    color: #333;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    min-height: 100vh;
 }
 
 header {
-    width: 100%;
-    background-color: #007BFF;
-    color: white;
     text-align: center;
-    padding: 20px 0;
-}
-
-h1 {
-    font-size: 2.5em;
-    margin: 0;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
 }
 
 #carrossel-container {
-    width: 100%;
-    max-width: 1200px;
-    overflow: hidden;
-    position: relative;
-    margin: 20px 0;
+    flex: 1; /* Para expandir o carrossel e ocupar o espaço disponível */
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 #carrossel {
+    width: 80%;
+    height: 500px; /* Aumenta o tamanho do carrossel */
+    background-color: #eee;
     display: flex;
-    transition: transform 0.5s ease;
     justify-content: center;
     align-items: center;
-}
-
-.desenho {
-    flex: 0 0 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.5s ease;
-    opacity: 0.3;
-    transform: scale(0.8);
-    margin: 0 10px;
-}
-
-.desenho.focus {
-    opacity: 1;
-    transform: scale(1.2);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    border: 3px solid #007BFF;
-}
-
-.desenho img {
-    max-width: 100%;
-    max-height: 400px; /* Espaço maior para desenhos no modo paisagem */
-    object-fit: contain;
     border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.desenho.focus img {
-    transform: scale(1.1);
-}
-
-.desenho p {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #007BFF;
-    margin-top: 10px;
-    text-align: center;
+    overflow: hidden;
+    position: relative;
 }
 
 footer {
     text-align: center;
-    background-color: #007BFF;
+    padding: 10px;
+    background-color: #4CAF50;
     color: white;
-    padding: 10px 0;
-    width: 100%;
-    position: fixed;
+    position: relative;
     bottom: 0;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .desenho {
-        flex: 0 0 80%;
-        max-width: 80%;
-    }
-
-    .desenho img {
-        max-height: 300px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .desenho {
-        flex: 0 0 25%;
-    }
-
-    .desenho img {
-        max-height: 500px;
-    }
+    width: 100%;
 }
