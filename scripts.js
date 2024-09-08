@@ -5,7 +5,7 @@ const desenhos = [
 ];
 
 const carrossel = document.getElementById('carrossel');
-let currentIndex = 0;
+let currentIndex = Math.floor(desenhos.length / 2); // Começa com o foco no meio
 
 // Exibir os desenhos no carrossel
 desenhos.forEach((desenho) => {
@@ -20,7 +20,8 @@ desenhos.forEach((desenho) => {
 
 function updateCarrossel() {
     const width = document.querySelector('.desenho').offsetWidth;
-    carrossel.style.transform = `translateX(-${currentIndex * width}px)`;
+    const halfWidth = (carrossel.offsetWidth - width) / 2; // Centraliza o carrossel
+    carrossel.style.transform = `translateX(${halfWidth - currentIndex * width}px)`;
 
     const allDesenhos = document.querySelectorAll('.desenho');
     allDesenhos.forEach((desenho, index) => {
@@ -36,7 +37,13 @@ function nextSlide() {
     updateCarrossel();
 }
 
-setInterval(nextSlide, 3000); // Troca de desenho a cada 3 segundos
+function loopSlides() {
+    setTimeout(() => {
+        nextSlide();
+        loopSlides();
+    }, 3000); // Intervalo de 3 segundos para cada slide
+}
 
+loopSlides(); // Inicia o loop contínuo
 window.onload = updateCarrossel;
 window.onresize = updateCarrossel;
