@@ -37,25 +37,31 @@ h1 {
     align-items: center;
     justify-content: center;
     transition: transform 0.5s ease;
-    opacity: 0.5;
+    opacity: 0.3;
+    transform: scale(0.8);
 }
 
 .desenho.focus {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border: 3px solid #007BFF;
 }
 
 .desenho img {
     max-width: 80%;
-    border: 2px solid #007BFF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.desenho.focus img {
+    transform: scale(1.1);
 }
 
 .desenho p {
     font-size: 1.2em;
     font-weight: bold;
-    color: #555;
+    color: #333;
 }
 
 footer {
@@ -80,6 +86,10 @@ footer {
     }
 
     .desenho.focus {
-        transform: scale(1.2); /* Aumenta o foco em telas maiores */
+        transform: scale(1.4); /* Aumenta o foco em telas maiores */
+    }
+
+    .desenho.focus img {
+        transform: scale(1.2);
     }
 }
