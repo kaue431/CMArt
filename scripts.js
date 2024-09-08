@@ -1,28 +1,44 @@
-// Lista de desenhos com URLs e autores
 const desenhos = [
-    {
-        autor: "JK",
-        url: "https://firebasestorage.googleapis.com/v0/b/cmart-81f45.appspot.com/o/Desenhos%2FScreenshot_2024-08-23-10-58-38-577_com.android.chrome.png?alt=media&token=a5dfae1a-e50d-4621-b5ef-dc329046f94b"
-    },
-    {
-        autor: "João Souza",
-        url: "https://firebasestorage.googleapis.com/v0/b/cmart-81f45.appspot.com/o/Desenhos%2Fdesenho2.png?alt=media&token=exampleToken2"
-    },
-    {
-        autor: "Ana Santos",
-        url: "https://firebasestorage.googleapis.com/v0/b/cmart-81f45.appspot.com/o/Desenhos%2Fdesenho3.png?alt=media&token=exampleToken3"
-    }
+    { autor: "Maria Silva", caminho: "desenhos/desenho1.png" },
+    { autor: "João Souza", caminho: "desenhos/desenho2.png" },
+    { autor: "Ana Santos", caminho: "desenhos/desenho3.png" },
+    { autor: "Pedro Oliveira", caminho: "desenhos/desenho4.png" },
+    { autor: "Carla Dias", caminho: "desenhos/desenho5.png" }
 ];
 
-// Exibir os desenhos na galeria
-const galeria = document.getElementById('galeria');
-galeria.innerHTML = ''; // Limpa o conteúdo antes de adicionar os desenhos
+const carrossel = document.getElementById('carrossel');
+let currentIndex = 0;
 
+// Exibir os desenhos no carrossel
 desenhos.forEach((desenho) => {
-    galeria.innerHTML += `
-        <div class="desenho">
-            <img src="${desenho.url}" alt="Desenho de ${desenho.autor}">
-            <p>Autor: ${desenho.autor}</p>
-        </div>
+    const div = document.createElement('div');
+    div.classList.add('desenho');
+    div.innerHTML = `
+        <img src="${desenho.caminho}" alt="Desenho de ${desenho.autor}">
+        <p>Autor: ${desenho.autor}</p>
     `;
+    carrossel.appendChild(div);
 });
+
+function updateCarrossel() {
+    const width = document.querySelector('.desenho').offsetWidth;
+    carrossel.style.transform = `translateX(-${currentIndex * width}px)`;
+
+    const allDesenhos = document.querySelectorAll('.desenho');
+    allDesenhos.forEach((desenho, index) => {
+        desenho.classList.remove('focus');
+        if (index === currentIndex) {
+            desenho.classList.add('focus');
+        }
+    });
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % desenhos.length;
+    updateCarrossel();
+}
+
+setInterval(nextSlide, 3000); // Troca de desenho a cada 3 segundos
+
+window.onload = updateCarrossel;
+window.onresize = updateCarrossel;
