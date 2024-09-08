@@ -1,13 +1,20 @@
-/* Estilos básicos do site */
-body {
-    font-family: Arial, sans-serif;
+/* Reseta as margens e bordas para evitar problemas de layout */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    box-sizing: border-box;
 }
 
+/* Estilos gerais para o body */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o body ocupe a altura total da janela */
+    overflow-x: hidden; /* Remove qualquer rolagem horizontal */
+}
+
+/* Estilo do cabeçalho */
 header {
     text-align: center;
     padding: 20px;
@@ -15,26 +22,31 @@ header {
     color: white;
 }
 
+/* Estilo do contêiner do carrossel */
 #carrossel-container {
-    flex: 1; /* Para expandir o carrossel e ocupar o espaço disponível */
+    flex: 1; /* Faz o contêiner ocupar todo o espaço disponível */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    overflow: hidden; /* Impede qualquer conteúdo de ultrapassar o contêiner */
 }
 
+/* Estilo do carrossel */
 #carrossel {
     width: 80%;
-    height: 500px; /* Aumenta o tamanho do carrossel */
+    height: 100%; /* O carrossel usará toda a altura disponível */
+    max-height: 500px; /* Define uma altura máxima para o carrossel */
     background-color: #eee;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: hidden; /* Para garantir que os desenhos não saiam da área visível */
     position: relative;
 }
 
+/* Estilo do rodapé */
 footer {
     text-align: center;
     padding: 10px;
