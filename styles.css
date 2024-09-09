@@ -35,12 +35,12 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400%; /* Para suportar até 4 slides */
+    width: calc(100% * 4); /* Corrigido para suportar 4 slides */
     transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-    min-width: 25%; /* Cada slide ocupa 1/4 do carrossel */
+    min-width: 100%; /* Cada slide ocupa 100% da largura do carrossel */
     display: flex;
     flex-direction: column;
     align-items: center;
