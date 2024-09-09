@@ -4,7 +4,7 @@ const totalSlides = slides.length;
 
 function showSlide(index) {
     const carrossel = document.getElementById('carrossel');
-    carrossel.style.transform = `translateX(-${index * 25}%)`;
+    carrossel.style.transform = `translateX(-${index * 100}%)`; // Corrigido para mover corretamente
 }
 
 function nextSlide() {
