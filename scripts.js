@@ -4,8 +4,7 @@ const totalSlides = slides.length;
 
 function showSlide(index) {
     const carrossel = document.getElementById('carrossel');
-    // Corrigido: agora, ele faz o ciclo correto de slides
-    carrossel.style.transform = `translateX(-${index * 100}%)`;
+    carrossel.style.transform = `translateX(-${index * (100 / totalSlides)}%)`;
 }
 
 function nextSlide() {
