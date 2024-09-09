@@ -29,27 +29,29 @@ header {
     padding: 20px;
     overflow: hidden;
     max-width: 100vw;
+    height: 70vh;
 }
 
 #carrossel {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(100% * 4); /* Corrigido para suportar 4 slides */
     transition: transform 0.5s ease-in-out;
+    width: 100%;
 }
 
 .slide {
-    min-width: 100%; /* Cada slide ocupa 100% da largura do carrossel */
+    flex: 0 0 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .slide img {
     width: 80%;
     height: auto;
-    max-height: 300px;
+    max-height: 500px;
     object-fit: contain;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -61,18 +63,14 @@ header {
     color: #333;
 }
 
-/* Responsivo para telas menores */
+/* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
-    #carrossel {
-        width: 100%;
+    #carrossel-container {
+        height: 50vh;
     }
-
-    .slide {
-        min-width: 100%; /* Um slide por vez em telas menores */
-    }
-
+    
     .slide img {
-        max-height: 200px;
+        max-height: 300px;
     }
 }
 
@@ -81,7 +79,5 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
-    width: 100%;
-    margin-top: auto;
     position: relative;
 }
