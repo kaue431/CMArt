@@ -28,18 +28,19 @@ header {
     align-items: center;
     padding: 20px;
     overflow: hidden;
+    max-width: 100vw;
 }
 
 #carrossel {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300%; /* Ajusta o tamanho do carrossel para 3 slides visíveis */
+    width: 400%; /* Para suportar até 4 slides */
     transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-    min-width: 33.33%; /* Cada slide ocupa 1/3 do carrossel */
+    min-width: 25%; /* Cada slide ocupa 1/4 do carrossel */
     display: flex;
     flex-direction: column;
     align-items: center;
