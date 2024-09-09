@@ -4,7 +4,8 @@ const totalSlides = slides.length;
 
 function showSlide(index) {
     const carrossel = document.getElementById('carrossel');
-    carrossel.style.transform = `translateX(-${index * 100}%)`; // Corrigido para mover corretamente
+    // Corrigido: agora, ele faz o ciclo correto de slides
+    carrossel.style.transform = `translateX(-${index * 100}%)`;
 }
 
 function nextSlide() {
@@ -12,7 +13,8 @@ function nextSlide() {
     showSlide(currentIndex);
 }
 
-setInterval(nextSlide, 3000); // Muda o slide a cada 3 segundos
+// Muda o slide a cada 3 segundos
+setInterval(nextSlide, 3000);
 
-// Inicializa o carrossel na posição correta
+// Inicia com o slide correto
 showSlide(currentIndex);
